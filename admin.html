@@ -3,15 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Admin - Nieuws</title>
+<title>Admin - Death Row</title>
 
 <style>
 body { font-family: Arial; background:#f4f4f4; padding:20px; }
 
+.hidden { display:none; }
+
 input, textarea {
     width:100%;
-    margin-bottom:10px;
     padding:10px;
+    margin-bottom:10px;
 }
 
 button {
@@ -32,7 +34,18 @@ button {
 
 <body>
 
-<h1>Admin - Nieuws toevoegen</h1>
+<!-- LOGIN -->
+<div id="loginBox">
+<h1>Admin Login</h1>
+<input type="password" id="password" placeholder="Wachtwoord">
+<button onclick="login()">Inloggen</button>
+<p id="error" style="color:red;"></p>
+</div>
+
+<!-- ADMIN PANEL -->
+<div id="adminPanel" class="hidden">
+
+<h1>Nieuws beheren</h1>
 
 <input type="text" id="title" placeholder="Titel">
 <textarea id="text" placeholder="Nieuws tekst"></textarea>
@@ -42,7 +55,27 @@ button {
 <h2>Bestaande berichten</h2>
 <div id="newsList"></div>
 
+</div>
+
 <script>
+
+// 🔐 WACHTWOORD HIER INSTELLEN
+const ADMIN_PASSWORD = "deathrow123";
+
+// LOGIN
+function login(){
+    let input = document.getElementById("password").value;
+
+    if(input === ADMIN_PASSWORD){
+        document.getElementById("loginBox").style.display="none";
+        document.getElementById("adminPanel").style.display="block";
+        loadAdmin();
+    } else {
+        document.getElementById("error").innerText="Fout wachtwoord!";
+    }
+}
+
+// STORAGE
 function getNews(){
     return JSON.parse(localStorage.getItem("news")) || [];
 }
@@ -51,6 +84,7 @@ function saveNews(news){
     localStorage.setItem("news", JSON.stringify(news));
 }
 
+// ADD
 function addNews(){
     let title = document.getElementById("title").value;
     let text = document.getElementById("text").value;
@@ -70,6 +104,7 @@ function addNews(){
     loadAdmin();
 }
 
+// DELETE
 function deleteNews(index){
     let news = getNews();
     news.splice(index,1);
@@ -77,6 +112,7 @@ function deleteNews(index){
     loadAdmin();
 }
 
+// LOAD
 function loadAdmin(){
     let news = getNews();
     let container = document.getElementById("newsList");
@@ -94,7 +130,6 @@ function loadAdmin(){
     });
 }
 
-loadAdmin();
 </script>
 
 </body>
