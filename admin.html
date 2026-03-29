@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin - Nieuws</title>
+
+<style>
+body { font-family: Arial; background:#f4f4f4; padding:20px; }
+
+input, textarea {
+    width:100%;
+    margin-bottom:10px;
+    padding:10px;
+}
+
+button {
+    padding:10px;
+    background:green;
+    color:white;
+    border:none;
+    cursor:pointer;
+}
+
+.news-item {
+    background:white;
+    padding:10px;
+    margin-top:10px;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Admin - Nieuws toevoegen</h1>
+
+<input type="text" id="title" placeholder="Titel">
+<textarea id="text" placeholder="Nieuws tekst"></textarea>
+
+<button onclick="addNews()">Toevoegen</button>
+
+<h2>Bestaande berichten</h2>
+<div id="newsList"></div>
+
+<script>
+function getNews(){
+    return JSON.parse(localStorage.getItem("news")) || [];
+}
+
+function saveNews(news){
+    localStorage.setItem("news", JSON.stringify(news));
+}
+
+function addNews(){
+    let title = document.getElementById("title").value;
+    let text = document.getElementById("text").value;
+
+    if(!title || !text){
+        alert("Vul alles in!");
+        return;
+    }
+
+    let news = getNews();
+    news.push({title, text});
+    saveNews(news);
+
+    document.getElementById("title").value="";
+    document.getElementById("text").value="";
+
+    loadAdmin();
+}
+
+function deleteNews(index){
+    let news = getNews();
+    news.splice(index,1);
+    saveNews(news);
+    loadAdmin();
+}
+
+function loadAdmin(){
+    let news = getNews();
+    let container = document.getElementById("newsList");
+    container.innerHTML="";
+
+    news.forEach((item, index)=>{
+        let div = document.createElement("div");
+        div.className="news-item";
+        div.innerHTML = `
+            <h3>${item.title}</h3>
+            <p>${item.text}</p>
+            <button onclick="deleteNews(${index})">Verwijderen</button>
+        `;
+        container.appendChild(div);
+    });
+}
+
+loadAdmin();
+</script>
+
+</body>
+</html>
