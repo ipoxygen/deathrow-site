@@ -6,78 +6,121 @@
 <title>Death Row Muay Thai</title>
 
 <style>
-body { font-family: Arial; margin:0; background:#f4f4f4; line-height:1.6; }
 
-header {
-    background: linear-gradient(green, yellow, red);
-    text-align:center;
-    padding:20px;
+/* 🔥 FULL BACKGROUND */
+body {
+    margin:0;
+    font-family: Arial, sans-serif;
+    color:white;
+    background: url("background.png") no-repeat center center fixed;
+    background-size: cover;
 }
 
-header img { max-width:120px; }
+/* LICHTE OVERLAY */
+body::before {
+    content:"";
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background: rgba(0,0,0,0.45);
+    z-index:-1;
+}
 
+/* NAV */
 nav {
-    background:#222;
+    position:sticky;
+    top:0;
+    background: rgba(0,0,0,0.9);
     display:flex;
     flex-wrap:wrap;
     justify-content:center;
+    z-index:999;
 }
 
 nav a {
     color:white;
-    padding:10px;
+    padding:12px;
     text-decoration:none;
 }
 
-nav a:hover { background:green; }
+nav a:hover {
+    background:green;
+}
 
-section {
-    background:white;
-    margin:10px;
+/* LOGO */
+.header {
+    text-align:center;
     padding:20px;
-    border-left:5px solid green;
+}
+
+.header img {
+    max-width:120px;
+}
+
+/* SECTIONS */
+section {
+    max-width:1100px;
+    margin:20px auto;
+    padding:25px;
+    background: rgba(0,0,0,0.75);
+    border-radius:12px;
 }
 
 /* TABLE */
-table { width:100%; border-collapse: collapse; }
-th, td { border:1px solid #ccc; padding:8px; }
-th { background:green; color:white; }
+table {
+    width:100%;
+    border-collapse:collapse;
+}
+th, td {
+    border:1px solid #444;
+    padding:10px;
+}
+th {
+    background:green;
+}
 
 /* ACCORDION */
 .accordion {
     background:green;
-    color:white;
-    padding:10px;
+    padding:12px;
     cursor:pointer;
     margin-top:10px;
 }
-
 .panel {
     display:none;
-    background:#eee;
+    background:#222;
     padding:15px;
+}
+
+/* GRID */
+.grid {
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap:15px;
 }
 
 /* NEWS */
 .news-item {
-    border-bottom:1px solid #ccc;
+    border-bottom:1px solid #444;
     margin-bottom:10px;
-    padding-bottom:10px;
 }
 
 /* MOBILE */
 @media(max-width:768px){
-    nav{flex-direction:column;}
+    nav { flex-direction:column; }
 }
+
 </style>
 </head>
 
 <body>
 
-<header>
+<div class="header">
 <img src="logo.jpg">
-<h1>Death Row Muay Thai</h1>
-</header>
+<h1>Death Row Muay Thai - Kickboxing - MMA</h1>
+</div>
 
 <nav>
 <a href="#locatie">Locatie</a>
@@ -105,32 +148,29 @@ th { background:green; color:white; }
 <tr><td>Maandag</td><td>19u30 – 20u30</td><td>TCF Recreanten</td><td>+16jaar</td></tr>
 <tr><td>Maandag</td><td>20u30 – 22u00</td><td>Trudo Grappling</td><td></td></tr>
 
-<tr><td>Dinsdag</td><td>18u30 – 19u30</td><td>Thai/kickboxing</td><td>- 15j jeugd</td></tr>
-<tr><td>Dinsdag</td><td>19u45 – 21u00</td><td>Thai/kickboxing</td><td>+ 15j volwassen</td></tr>
+<tr><td>Dinsdag</td><td>18u30 – 19u30</td><td>Thai/kickboxing</td><td>-15j jeugd</td></tr>
+<tr><td>Dinsdag</td><td>19u45 – 21u00</td><td>Thai/kickboxing</td><td>+15j volwassen</td></tr>
 
 <tr><td>Woensdag</td><td>16u00 – 17u00</td><td>Thai/kickboxing</td><td>-15j jeugd</td></tr>
 <tr><td>Woensdag</td><td>19u30 – 20u30</td><td>Trudo Grappling</td><td></td></tr>
 
 <tr><td>Donderdag</td><td>18u30 – 19u30</td><td>Thai/kickboxing</td><td>-15j jeugd</td></tr>
-<tr><td>Donderdag</td><td>19u45 – 21u00</td><td>Thai/kickboxing</td><td>+ 15j volwassen</td></tr>
+<tr><td>Donderdag</td><td>19u45 – 21u00</td><td>Thai/kickboxing</td><td>+15j volwassen</td></tr>
 
 <tr><td>Vrijdag</td><td>19u30 – 20u30</td><td>TCF recreanten</td><td>+15jaar</td></tr>
 <tr><td>Vrijdag</td><td>20u30 – 22u00</td><td>Mixed Martial Arts</td><td>+15jaar</td></tr>
 
 <tr><td>Zaterdag</td><td>10u30 – 11u30</td><td>Wedstrijd Team</td><td>Op Uitnodiging</td></tr>
 </table>
-
 </section>
 
 <section id="info">
 <h2>Meer Club Info</h2>
-
 <p>
 Info Thai-Kickboksen: Dirkgeerts@telenet.be – 0476 451 665 - tkdeathrow@hotmail.com<br><br>
 Info TCF Work-Out: tcfworkout@outlook.com – 0476 451 665<br><br>
-Info MMA - Grappling : sebastiaan.raes@rva.be - sultanbiev.k@gmail.com
+Info MMA - Grappling : seraes2015@gmail.com - sultanbiev.k@gmail.com
 </p>
-
 </section>
 
 <section id="werking">
@@ -143,15 +183,17 @@ Info MMA - Grappling : sebastiaan.raes@rva.be - sultanbiev.k@gmail.com
 
 3de moeten deze documenten ingevuld terug afgegeven worden op training.<br><br>
 
-4de het formulier dat je nu verkrijgt moet je ASAP naar de dokter gaan & terug binnenbrengen op de club. Zodra dit binnengebracht wordt, vertrekt alles naar de federatie & binnen de paar dagen ben je in orde om mee te trainen.<br><br>
+4de het formulier dat je nu verkrijgt moet je ASAP naar de dokter gaan & terug binnenbrengen op de club. Zodra dit binnengebracht wordt, vertrekt alles naar de federatie & binnen de paar dagen ben je in orde om mee te trainen, in afwachting van uw boekje.<br><br>
 
-Lesgeld:<br><br>
-
+Lesgeld:<br>
 -16jaar 35€ voor 10 beurtenkaart. (Thai – Kick – M.M.A)<br>
 +16jaar 50€ voor 10 beurtenkaart. (Thai-Kick – M.M.A)<br><br>
 
 Licentie/verzekering V.K.B.M.O. is verplicht voor alle lessen Thai – KickBoxing & M.M.A.<br>
-Prijs 50€/jaar.
+Prijs 50€/jaar waarvan uw ziekenfonds een stukje terugbetaald.<br><br>
+
+TCF Work-Out: Zonder licentie/verzekering = 55€ voor 10 beurtenkaart.<br>
+Verplicht Jaarlijks lidkaart 10€/jaar lidgeld & administratie kosten. Niet verzekerd !!!!!
 </p>
 
 </section>
@@ -159,7 +201,7 @@ Prijs 50€/jaar.
 <section id="reglement">
 <h2>Dojo Reglement</h2>
 
-<div class="accordion">Algemeen Reglement (klik open)</div>
+<div class="accordion">Klik om volledig reglement te openen</div>
 <div class="panel">
 <ol>
 <li>Licentie moet in orde zijn om mee te trainen.</li>
@@ -167,39 +209,32 @@ Prijs 50€/jaar.
 <li>Lesgeld moet steeds betaald worden.</li>
 <li>Er wordt enkel getraind in de voorzien sportkledij.</li>
 <li>Onder de 18jaar moet er de 1ste keer een volwassen bij zijn.</li>
-<li>Geen ouders of supports tijdens de jeugdtrainingen.</li>
-<li>Er worden geen privé kwesties uitgevochten in onze Dojo.</li>
-<li>Let op uw taalgebruik, wees steeds respectvol.</li>
-<li>Voor & na elke training wordt er af gegroet.</li>
-<li>Handschoen / scheenbescherming / bitje / Tok is VERPLICHT.</li>
-<li>Ook buiten de club vertegenwoordig je onze club.</li>
+<li>Geen ouders tijdens jeugdtrainingen.</li>
+<li>Geen privé kwesties.</li>
+<li>Respectvol gedrag.</li>
+<li>Groeten voor & na training.</li>
+<li>Bescherming verplicht.</li>
+<li>Gedrag buiten club belangrijk.</li>
 <li>Geen drugs of alcohol.</li>
-<li>Voor filmen/foto’s toestemming nodig.</li>
-<li>Geen jeugd -15 j. bij volwassen training.</li>
+<li>Geen foto's zonder toestemming.</li>
+<li>Geen jeugd bij volwassenen training.</li>
 <li>Materiaal opruimen.</li>
-<li>Dojo netjes achterlaten.</li>
-<li>Matten worden geborsteld.</li>
-<li>Materiaal voor beginners tijdelijk beschikbaar.</li>
+<li>Netheid dojo.</li>
+<li>Matten reinigen.</li>
+<li>Eigen materiaal.</li>
 <li>3 proeftrainingen max.</li>
-<li>Technieken enkel voor sport.</li>
-<li>Boksring is geen speelplaats.</li>
-<li>Blootsvoets trainen verplicht.</li>
-<li>Geen juwelen/piercings.</li>
-<li>Nagels kort geknipt.</li>
-<li>Materiaal verluchten na training.</li>
+<li>Technieken enkel sport.</li>
+<li>Ring is geen speelplaats.</li>
+<li>Blootsvoets trainen.</li>
+<li>Geen juwelen.</li>
+<li>Nagels kort.</li>
+<li>Materiaal verluchten.</li>
 <li>Geen eten/drinken op mat.</li>
-<li>Gemorst = onmiddellijk reinigen.</li>
+<li>Vuil direct opruimen.</li>
 <li>Respectvol club verlaten.</li>
-<li>Andere clubs via trainer contact.</li>
-<li>Wedstrijden vanaf 12 jaar.</li>
+<li>Andere clubs via trainer.</li>
+<li>Minimum 12 jaar wedstrijden.</li>
 </ol>
-</div>
-
-<div class="accordion">Sancties (klik open)</div>
-<div class="panel">
-<p><b>Te laat komen:</b> straf oefeningen + toestemming vragen trainer</p>
-<p><b>Ring misbruik:</b> 200x schrijven</p>
-<p><b>Materiaal laten liggen:</b> extra oefeningen</p>
 </div>
 
 </section>
@@ -207,24 +242,15 @@ Prijs 50€/jaar.
 <section id="trainers">
 <h2>Bestuur & Trainers</h2>
 
-<p>
-Voorzitter: Bert Vanmechelen<br>
-Founder: Dirk Geerts<br>
-Penningmeester: Kathleen Sneijers<br>
-Secretaris: Jeroen Rotty<br>
-IT: Raf Criel<br><br>
-
-Trainers:<br>
-Dirk Geerts<br>
-Jeroen Rotty<br>
-Geert Vrancken<br>
-Maxim Mees<br>
-Kevin Maes<br>
-Hans Strauven<br>
-Hamid Sultanbiev<br>
-Sebastiaan Raes<br>
-Kamalbayev Hasan
-</p>
+<div class="grid">
+<div><b>Voorzitter</b><br>Bert Vanmechelen</div>
+<div><b>Founder</b><br>Dirk Geerts</div>
+<div><b>Secretaris</b><br>Jeroen Rotty</div>
+<div><b>Trainer</b><br>Geert Vrancken</div>
+<div><b>Trainer</b><br>Maxim Mees</div>
+<div><b>MMA</b><br>Sultanbiev</div>
+<div><b>MMA</b><br>Sebastiaan Raes</div>
+</div>
 
 </section>
 
@@ -235,9 +261,10 @@ Kamalbayev Hasan
 
 <section id="links">
 <h2>Links</h2>
-<p><a href="https://www.facebook.com/groups/tkmdeathrow">Facebook groep</a></p>
+<p><a href="https://www.facebook.com/groups/tkmdeathrow">Facebook</a></p>
+<p><a href="https://www.facebook.com/groups/163591743752863">Facebook 2</a></p>
 <p><a href="https://www.instagram.com/death_row_mtk1">Instagram</a></p>
-<p><a href="https://www.sint-truiden.be">Sint-Truiden</a></p>
+<p><a href="https://www.sint-truiden.be ">Stad Sint-Truiden</a></p>
 </section>
 
 <script>
@@ -253,7 +280,6 @@ document.querySelectorAll(".accordion").forEach(btn=>{
 function loadNews(){
     let news = JSON.parse(localStorage.getItem("news")) || [];
     let container = document.getElementById("newsContainer");
-    container.innerHTML="";
     news.reverse().forEach(item=>{
         let div=document.createElement("div");
         div.className="news-item";
